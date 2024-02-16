@@ -10,6 +10,6 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib)
 
 include_directories(./include)
 
-add_executable(${PROJECT_NAME} ./src/main.c)
+add_executable(${PROJECT_NAME} ./src/main.c ./src/utils.c)
 
-add_executable(${PROJECT_NAME}_test ./tests/main.c)
+add_executable(${PROJECT_NAME}_test ./tests/main.c ./src/utils.c)
