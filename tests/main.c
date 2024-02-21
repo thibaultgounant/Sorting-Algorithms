@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "tests.h"
 
 int main(int argc, char *argv[]) {
-    printf("Hello, World!\n");
+    bubble_sort_test();
     return EXIT_SUCCESS;
 }
