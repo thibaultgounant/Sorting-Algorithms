@@ -3,5 +3,6 @@
 
 void bubble_sort_test();
 void insertion_sort_test();
+void selection_sort_test();
 
 #endif
