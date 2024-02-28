@@ -8,5 +8,6 @@ int main(int argc, char *argv[]) {
     selection_sort_test();
     merge_sort_test();
     quick_sort_test();
+    counting_sort_test();
     return EXIT_SUCCESS;
 }
