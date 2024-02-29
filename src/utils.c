@@ -7,7 +7,7 @@ void swap(int *a, int *b) {
     *b = temp;
 }
 
-bool is_sorted(const int array[], int size) {
+bool is_sorted(const int array[], size_t size) {
     bool sorted = true;
     for (int i = 0; i < size - 1 && sorted; ++i) {
         sorted = array[i] <= array[i+1];
@@ -19,4 +19,11 @@ void print_result(bool result, char message[]) {
     result ?
     fprintf(stdout, "\033[0;32m PASS \033[0m \t %s", message) :
     fprintf(stderr, "\033[1;31m FAIL \033[0m \t %s", message);
+}
+
+void print_array(const int array[], size_t size) {
+    for (int i = 0; i < size; ++i) {
+        printf("%i ", array[i]);
+    }
+    printf("\n");
 }

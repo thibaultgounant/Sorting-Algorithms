@@ -1,3 +1,4 @@
+#include <stdio.h>
 
 static void merge(int array[], int start, int middle, int end) {
     int buffer[end - start + 1];
@@ -5,14 +6,13 @@ static void merge(int array[], int start, int middle, int end) {
         buffer[i - start] = array[i];
     }
 
-    int i = 0;
-    int j = middle + 1 - start;
-    int k = start;
-    while (k <= end) {
-        if (j > end || (i <= middle-start && buffer[i] < buffer[j])) {
-            array[k++] = buffer[i++];
+    int left = 0;
+    int right = middle + 1 - start;
+    for (int i = start; i <= end; ++i) {
+        if (right > end || (left < middle + 1 - start && buffer[left] < buffer[right])) {
+            array[i] = buffer[left++];
         } else {
-            array[k++] = buffer[j++];
+            array[i] = buffer[right++];
         }
     }
 }
@@ -26,6 +26,6 @@ static void merge_sort_helper(int array[], int start, int end) {
     }
 }
 
-void merge_sort(int array[], int size) {
+void merge_sort(int array[], size_t size) {
     merge_sort_helper(array, 0, size-1);
 }

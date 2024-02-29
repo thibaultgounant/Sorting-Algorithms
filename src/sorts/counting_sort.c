@@ -1,5 +1,6 @@
+#include <stdio.h>
 
-void counting_sort(int array[], int size) {
+void counting_sort(int array[], size_t size) {
     int min = array[0];
     int max = array[0];
     for (int i = 1; i < size; ++i) {
@@ -12,8 +13,8 @@ void counting_sort(int array[], int size) {
     }
 
     int buffer[max - min + 1];
-    for (int i = 0; i < max - min + 1; ++i) {
-        buffer[i] = 0;
+    for (int i = min; i <= max; ++i) {
+        buffer[i - min] = 0;
     }
 
     for (int i = 0; i < size; ++i) {
@@ -21,10 +22,9 @@ void counting_sort(int array[], int size) {
     }
 
     int index = 0;
-    for (int i = 0; i < max - min + 1; ++i) {
-        while (buffer[i] > 0) {
-            array[index++] = i + min;
-            buffer[i]--;
+    for (int i = min; i <= max; ++i) {
+        for (int j = 0; j < buffer[i - min]; ++j) {
+            array[index++] = i;
         }
     }
 }

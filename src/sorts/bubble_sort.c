@@ -1,6 +1,7 @@
+#include <stdio.h>
 #include "utils.h"
 
-void bubble_sort(int array[], int size) {
+void bubble_sort(int array[], size_t size) {
     bool sorted;
     for (int i = 0; i < size && !sorted; ++i) {
         sorted = true;

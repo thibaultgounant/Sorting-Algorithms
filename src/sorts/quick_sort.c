@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "utils.h"
 
 static int pivot(int array[], int start, int end) {
@@ -37,6 +38,6 @@ static void quick_sort_helper(int array[], int start, int end) {
     }
 }
 
-void quick_sort(int array[], int size) {
+void quick_sort(int array[], size_t size) {
     quick_sort_helper(array, 0, size-1);
 }
