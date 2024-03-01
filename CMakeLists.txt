@@ -11,8 +11,8 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib)
 include_directories(./include)
 
 aux_source_directory(./src/sorts SORTS)
+aux_source_directory(./src/helpers HELPERS)
 aux_source_directory(./tests/sorts TESTS)
 
-add_executable(${PROJECT_NAME} ./src/main.c ./src/utils.c ${SORTS})
-
-add_executable(${PROJECT_NAME}_test ./tests/main.c ./src/utils.c ${SORTS} ${TESTS})
+add_executable(${PROJECT_NAME} ./src/main.c ${SORTS} ${HELPERS})
+add_executable(${PROJECT_NAME}_test ./tests/main.c ${SORTS} ${HELPERS} ${TESTS})

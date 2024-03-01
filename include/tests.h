@@ -1,11 +1,8 @@
 #ifndef SORTING_ALGORITHMS_TESTS_H
 #define SORTING_ALGORITHMS_TESTS_H
 
-void bubble_sort_test();
-void insertion_sort_test();
-void selection_sort_test();
-void merge_sort_test();
-void quick_sort_test();
-void counting_sort_test();
+bool is_sorted(const int array[], size_t size);
+void print_result(bool result, const char message[]);
+void sorts_tests(void (*sorting_algorithm)(int[], size_t), char name[]);
 
 #endif
