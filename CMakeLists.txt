@@ -4,7 +4,7 @@ project(Sorting_Algorithms C)
 
 set(CMAKE_C_STANDARD 23)
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY  ${PROJECT_SOURCE_DIR}/bin)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib)
 
@@ -16,3 +16,8 @@ aux_source_directory(./tests/sorts TESTS)
 
 add_executable(${PROJECT_NAME} ./src/main.c ${SORTS} ${HELPERS})
 add_executable(${PROJECT_NAME}_test ./tests/main.c ${SORTS} ${HELPERS} ${TESTS})
+
+add_subdirectory(./lib/glfw)
+add_subdirectory(./lib/glew)
+
+target_link_libraries(${PROJECT_NAME} glfw libglew_static)
