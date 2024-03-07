@@ -9,37 +9,39 @@
 #define WIDTH 1280
 #define HEIGHT 720
 
+void draw(const int array[], int size) {
+    for (int i = 0; i < size; i++) {
+        float bar_width = WIDTH / (float) size;
+        float bar_height = array[i];
+        float x = i * bar_width;
+        float y = 0;
+
+        glBegin(GL_QUADS);
+        glColor3d(0.1, 0.2,  0.3);
+        glVertex2f(x, 0);
+        //glColor3d(0.0, 0.0, 0.0);
+        glVertex2f(x + bar_width, y);
+        //glColor3d(0.0, 0.0, 0.0);
+        glVertex2f(x + bar_width, y + bar_height);
+        //glColor3d(0.0, 0.0, 0.0);
+        glVertex2f(x, y);
+        glEnd();
+    }
+}
+
 int main(int argc, char *argv[]) {
 
-    if (!glfwInit()) {
-        fprintf(stderr, "Failed to initialize GLFW\n");
-        return EXIT_FAILURE;
-    }
-
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwInit();
+    glewInit();
 
     GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Sorting Visualization", NULL, NULL);
 
-    if (!window) {
-        fprintf(stderr, "Failed to create GLFW window\n");
-        glfwTerminate();
-        return EXIT_FAILURE;
-    }
-
     glfwMakeContextCurrent(window);
 
-    if (glewInit() != GLEW_OK) {
-        fprintf(stderr, "Failed to initialize GLEW\n");
-        glfwTerminate();
-        return EXIT_FAILURE;
-    }
-
     glViewport(0, 0, WIDTH, HEIGHT);
+    glOrtho(0, WIDTH, 0, HEIGHT, -1, 1);
 
-    while (!glfwWindowShouldClose(window))
-    {
+    while (!glfwWindowShouldClose(window)) {
         glClear(GL_COLOR_BUFFER_BIT);
 
         glfwSwapBuffers(window);
