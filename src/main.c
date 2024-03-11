@@ -11,22 +11,41 @@
 #define HEIGHT 720
 #define SIZE 100000
 
+GLfloat map(GLfloat value, GLfloat min, GLfloat max, GLfloat a, GLfloat b) {
+    return a + (value - min) * (b - a) / (max - min);
+}
+
+GLfloat lerp(GLfloat a, GLfloat b, GLfloat t) {
+    return a + t * (b - a);
+}
+
+GLfloat color(GLfloat x, GLfloat y) {
+    return lerp(map(x, 0.0f, WIDTH, 0.0f, 1.0f),
+                map(y, 0.0f, HEIGHT, 0.0f, 1.0f),
+                (x + y) / (WIDTH + HEIGHT));
+}
+
 void draw(const int array[], int size) {
-    for (int i = 0; i < size; i++) {
-        float bar_width = WIDTH / (float) size;
-        float bar_height = array[i];
-        float x = i * bar_width;
-        float y = 0;
+    for (int i = 0; i < size; ++i) {
+        GLfloat bar_width = WIDTH / (float) size;
+        GLfloat bar_height = array[i];
+        GLfloat x = i * bar_width;
+        GLfloat y = 0;
 
         glBegin(GL_QUADS);
-        glColor3d(0.1, 0.2,  0.3);
+
+        glColor3f(color(x, y), color(x, y), color(x, y));
         glVertex2f(x, y);
-        //glColor3d(0.0, 0.0, 0.0);
+
+        glColor3f(color(x + bar_width, y), color(x + bar_width, y), color(x + bar_width, y));
         glVertex2f(x + bar_width, y);
-        //glColor3d(0.0, 0.0, 0.0);
+
+        glColor3f(color(x + bar_width, y + bar_height), color(x + bar_width, y + bar_height), color(x + bar_width, y + bar_height));
         glVertex2f(x + bar_width, y + bar_height);
-        //glColor3d(0.0, 0.0, 0.0);
+
+        glColor3f(color(x, y + bar_height), color(x, y + bar_height), color(x, y + bar_height));
         glVertex2f(x, y + bar_height);
+
         glEnd();
     }
 }
