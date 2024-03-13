@@ -1,5 +1,5 @@
-
 #include <stdio.h>
+#include <stdlib.h>
 
 void swap(int *a, int *b) {
     int temp = *a;
@@ -7,9 +7,15 @@ void swap(int *a, int *b) {
     *b = temp;
 }
 
-void print_array(const int array[], size_t size) {
+void print(const int array[], size_t size) {
     for (int i = 0; i < size; ++i) {
         printf("%i ", array[i]);
     }
     printf("\n");
+}
+
+void shuffle(int array[], size_t size) {
+    for (int i = 0; i < size; ++i) {
+        swap(&array[i], &array[rand() % size]);
+    }
 }

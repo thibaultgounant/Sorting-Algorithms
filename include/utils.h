@@ -2,6 +2,7 @@
 #define SORTING_ALGORITHMS_UTILS_H
 
 void swap(int *a, int *b);
-void print_array(const int array[], size_t size);
+void print(const int array[], size_t size);
+void shuffle(int array[], size_t size);
 
 #endif
