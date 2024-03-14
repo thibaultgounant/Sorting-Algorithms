@@ -19,3 +19,9 @@ void shuffle(int array[], size_t size) {
         swap(&array[i], &array[rand() % size]);
     }
 }
+
+void reverse(int array[], size_t size) {
+    for (int i = 0; i < size / 2; ++i) {
+        swap(&array[i], &array[size-1-i]);
+    }
+}
