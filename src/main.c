@@ -53,10 +53,7 @@ void draw(const int array[], int size) {
 int main(int argc, char *argv[]) {
 
     int array[SIZE];
-    srand(time(NULL));
-    for (int i = 0; i < SIZE; ++i) {
-        array[i] = rand() % HEIGHT;
-    }
+    random(array, SIZE, 0, HEIGHT);
 
     glfwInit();
     glewInit();

@@ -5,5 +5,6 @@ void swap(int *a, int *b);
 void print(const int array[], size_t size);
 void shuffle(int array[], size_t size);
 void reverse(int array[], size_t size);
+void random(int array[], size_t size, int low, int high);
 
 #endif
